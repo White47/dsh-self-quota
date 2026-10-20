@@ -15,17 +15,23 @@
 | M0 | 组合包骨架 + Config schema（**额度在插件界面里自己设**）+ 装载进 profile | ✅ 已完成并验证 |
 | M1 | 用量采集（`session/event`）+ 幂等去重 + 双窗状态机 + 本地落盘 + 鲸元券账本 | ✅ 已完成并验证 |
 | **M4** | **跟随官方真实节奏：全局重置 → 清窗；官方发券 → 本地发「鲸元券」+ 历史回溯补发** | ✅ 已完成并验证（默认关闭） |
-| M5 | 硬锁（`agent/pre-step` → reject、`tools/pre-execute` → deny） | ✅ 已实现，**默认就是 `lock`**（用户要求：开箱即硬锁） |
-| **M2** | **左下角进度环挂件 + 展开面板**（client 半体，零构建手写 JS） | ✅ 已实现 + 契约单测通过，⏳ 待重启确认渲染 |
-| **M3** | **设置 → 通用里的「周额度」快捷行**（真实写入路径）+ `countBackground` / `allowReadOnlyWhileLocked` | ✅ 已完成 + 单测通过，⏳ 待重启确认 |
+| M5 | 硬锁（`agent/pre-step` → reject、`tools/pre-execute` → deny） | ✅ 已实现并验证，**默认就是 `lock`** |
+| M2 | 左下角进度环挂件 + 展开面板（client 半体，零构建手写 JS） | ✅ 已实现并验证 |
+| M3 | 插件列表里的配置页 + 用量统计（真实写入路径 `configEditor.edit`） | ✅ 已实现并验证 |
 
-**默认执行档位是 `warn`（只记录不拦）**。验证过计量准确、翻窗正常之后再切 `lock`。
+**默认执行档位是 `lock`**：额度用尽即锁死对话，只有你自己改配置才会变。
+想先只观察一段时间，把 `enforcement` 改成 `warn`（只提示不拦）或 `off`（只记录）。
+
+> 仓库地址：<https://github.com/White47/dsh-self-quota>
 
 ---
 
 ## 装 / 卸
 
 ```sh
+# 从 GitHub 克隆
+git clone https://github.com/White47/dsh-self-quota.git
+
 # 安装（本地目录）
 dsh plugin --profile desktop add /path/to/dsh-self-quota
 
