@@ -1,0 +1,22 @@
+# 统一换行符：仓库里一律 LF，检出时按平台自动处理。
+# 这个项目里有大量 JS + YAML + 中文 Markdown，Windows 上最容易因 CRLF 产生整文件 diff。
+* text=auto
+
+*.js    text eol=lf
+*.mjs   text eol=lf
+*.cjs   text eol=lf
+*.json  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.md    text eol=lf
+
+# 二进制
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+
+# 锁文件：不要在 diff 里做语言统计，也别让 GitHub 折叠它们
+pnpm-lock.yaml  linguist-generated=true

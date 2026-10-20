@@ -1,0 +1,29 @@
+# ── 依赖 ─────────────────────────────────────────────────────────────
+node_modules/
+.pnpm-store/
+
+# ── 本地运行产物 ──────────────────────────────────────────────────────
+# 插件把状态写在 %DSH_HOME%\storages\dsh-self-quota\，正常不会进仓库；
+# 这里兜底，避免有人把状态目录拷进项目后误提交。
+state.json
+status.json
+last-write.json
+*.state.json
+
+# ── 日志与临时文件 ────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+pnpm-debug.log*
+*.tgz
+.cache/
+tmp/
+.tmp/
+
+# ── 编辑器 / 操作系统 ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+desktop.ini

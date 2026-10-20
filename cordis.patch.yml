@@ -1,0 +1,7 @@
+# 鲸元额度（dsh-self-quota）组合包自带的挂载层。
+# 安装进 profile 后，这一行会被并入运行中的 loader 配置。
+# 用户可在自己 profile 的 cordis.patch.yml 里按 id（self-quota）覆盖 config，
+# 注意：patch 会替换目标行的整个 config，而不是深度合并。
+- insert:
+    - id: self-quota
+      name: dsh-self-quota
